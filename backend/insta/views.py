@@ -13,8 +13,8 @@ def main(request):
         dm = str(request.GET.get('dm'))
         me = int(request.GET.get('me'))
         you = int(request.GET.get('you'))
-        saveDM(dm, me, you)
-        return HttpResponse("Saved!")
+        # return HttpResponse("Saved!")
+        return JsonResponse(saveDM(dm, me, you), safe=False)
     else:
         return HttpResponse("xx?")
 
@@ -53,8 +53,9 @@ def saveDM(dm, me, you):
     """
     cursor.execute(update_time, [me, you, you, me])
     connection.commit()  # 변경 사항 저장
-    # print("데이터가 성공적으로 삽입되었습니다.")        
+    print("데이터가 성공적으로 삽입되었습니다.ssss")        
     # pass
+    return setChats(me)
 
 def setChats(id):
     cursor = connection.cursor()
@@ -84,7 +85,7 @@ def setChats(id):
             "id": i_id,
             "name": name,
             "messages":[],
-            "createdat":createdat
+            "createdat":createdat.strftime("%Y/%m/%d %H:%M:%S"),
             } # print(charts) = {i_id: "name"}
         # 내가 보냈냐 안 보냈냐 확인 
         # chats[partner_id]['messages'].append({

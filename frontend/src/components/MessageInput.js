@@ -41,17 +41,17 @@ const MessageInput = ({ addMessage, curUserid, receiv_id }) => {
     if (inputValue.trim()) {
       addMessage({ text: inputValue, send: true });
 
-      axios.get("http://127.0.0.1:8000", {
-        params: {
-          select: 2,
-          dm: inputValue,
-          me: curUserid,
-          you: receiv_id,
-        },
-      })
-      .then((response) => {
-
-      });
+      // axios.get("http://127.0.0.1:8000", {
+      //   params: {
+      //     select: 2,
+      //     dm: inputValue,
+      //     me: curUserid,
+      //     you: receiv_id,
+      //   },
+      // })
+      // .then((response) => {
+      //   setInputValue('');
+      // });
 
       setInputValue('');
     }

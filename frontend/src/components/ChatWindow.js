@@ -8,10 +8,10 @@ const WindowContainer = styled.div`
   padding: 10px;
 `;
 
-const ChatWindow = ({ messages, tf }) => {
+const ChatWindow = ({ messages}) => {
   return (
     <WindowContainer>
-      <MessageList messages={messages} tf={tf} />
+      <MessageList messages={messages}/>
     </WindowContainer>
   );
 };
