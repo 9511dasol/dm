@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import axios from "axios";
 
 const InputContainer = styled.div`
   padding: 10px;
@@ -30,7 +29,7 @@ const SendButton = styled.button`
   }
 `;
 
-const MessageInput = ({ addMessage, curUserid, receiv_id }) => {
+const MessageInput = ({ sendMessage, curUserid, receiv_id }) => {
   const [inputValue, setInputValue] = useState('');
   
   const handleInputChange = (e) => {
@@ -39,7 +38,7 @@ const MessageInput = ({ addMessage, curUserid, receiv_id }) => {
 
   const handleSend = () => {
     if (inputValue.trim()) {
-      addMessage({ text: inputValue, send: true });
+      sendMessage({ text: inputValue, send: true });
 
       // axios.get("http://127.0.0.1:8000", {
       //   params: {

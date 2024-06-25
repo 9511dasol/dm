@@ -9,16 +9,22 @@ def main(request):
         curId = int(request.GET.get('curId'))
         chats_list = setChats(curId)
         return JsonResponse(chats_list, safe=False)
-    elif select == 2: # 입력에 대한 채팅 db에 넣기
+    elif select == 2: # send
         dm = str(request.GET.get('dm'))
         me = int(request.GET.get('me'))
         you = int(request.GET.get('you'))
         # return HttpResponse("Saved!")
-        return JsonResponse(saveDM(dm, me, you), safe=False)
+        return JsonResponse(sendDM(dm, me, you), safe=False)
+    elif select == 3: # receive
+        dm = str(request.GET.get('dm'))
+        me = int(request.GET.get('me'))
+        you = int(request.GET.get('you'))
+        # return HttpResponse("Saved!")
+        return JsonResponse(receiveDM(dm, me, you), safe=False)
     else:
         return HttpResponse("xx?")
 
-def saveDM(dm, me, you):
+def sendDM(dm, me, you):
     cursor = connection.cursor()
      
     dm_room = f"""
@@ -53,7 +59,46 @@ def saveDM(dm, me, you):
     """
     cursor.execute(update_time, [me, you, you, me])
     connection.commit()  # 변경 사항 저장
-    print("데이터가 성공적으로 삽입되었습니다.ssss")        
+    print("데이터가 성공적으로 저장되었습니다.ssss")        
+    # pass
+    return setChats(me)
+
+def receiveDM(dm, me, you):
+    cursor = connection.cursor()
+     
+    dm_room = f"""
+            SELECT dr_host, dr_guest
+            FROM dm_room
+            WHERE dr_guest = {me}
+        """
+    cursor.execute(dm_room)
+    rows = cursor.fetchall()
+    tu = (you, me)
+    # 방이 없으면 방 생성 양쪽 다
+    if tu not in rows:
+        create_dmroom = """
+            INSERT INTO dm_room (dr_host, dr_guest)
+            VALUES (%s, %s), (%s, %s)
+        """
+        cursor.execute(create_dmroom, [me, you, you, me])
+        connection.commit()  # 변경 사항 저장
+        
+    insert_query = """
+            INSERT INTO Messages (sender_id, receiver_id, message_text)
+            VALUES (%s, %s, %s)
+            """
+           
+    cursor.execute(insert_query, [you, me, dm])
+    connection.commit()  # 변경 사항 저장
+    
+    update_time = """
+        UPDATE dm_room
+        SET created_at = CURRENT_TIMESTAMP
+        WHERE (dr_host =%s AND dr_guest =%s) OR (dr_host =%s AND dr_guest =%s)
+    """
+    cursor.execute(update_time, [me, you, you, me])
+    connection.commit()  # 변경 사항 저장
+    print("데이터가 성공적으로 저장되었습니다.ssss")        
     # pass
     return setChats(me)
 
@@ -116,3 +161,4 @@ def setChats(id):
         })
     chats_list = list(chats.values())
     return chats_list
+

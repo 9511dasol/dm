@@ -4,7 +4,6 @@ import React from 'react';
 const ListItem = styled.div`
   padding: 15px;
   border-bottom: 1px solid #dbdbdb;
-  cursor: pointer;
   display: flex;
   align-items: center;
   &:hover {
@@ -20,12 +19,24 @@ const Avatar = styled.div`
   margin-right: 10px;
 `;
 
+// const Readed = styled.div`
+//   width: 40px;
+//   height: 40px;
+//   border-radius: 50%;
+//   background-color: #bbb;
+//   margin-right: 10px;
+// `;
+
 const ChatListItem = ({ chat, selectChat }) => {
   return (
-    <ListItem onClick={() => selectChat(chat.id)}>
-      <Avatar />
-      {chat.name}
-    </ListItem>
+    <a>
+      <ListItem onClick={() => selectChat(chat.id)}>
+        <Avatar />
+        {chat.name}
+        {/* <Readed/> */}
+      </ListItem>
+    </a>
+
   );
 };
 
