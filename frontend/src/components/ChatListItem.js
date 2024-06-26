@@ -1,15 +1,19 @@
-import styled from 'styled-components';
-import React from 'react';
+import styled from "styled-components";
+import React from "react";
 
 const ListItem = styled.div`
   padding: 15px;
   border-bottom: 1px solid #dbdbdb;
   cursor: pointer;
   display: flex;
+
   align-items: center;
+
   &:hover {
     background-color: #f0f0f0;
   }
+
+
 `;
 
 const Avatar = styled.div`
@@ -19,12 +23,22 @@ const Avatar = styled.div`
   background-color: #bbb;
   margin-right: 10px;
 `;
-
+const Box = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1px;
+  @media (max-width: 899px) {
+    display: none;
+  }
+`;
 const ChatListItem = ({ chat, selectChat }) => {
   return (
     <ListItem onClick={() => selectChat(chat.id)}>
       <Avatar />
-      {chat.name}
+      <Box>
+        <span>{chat.name}</span>
+        <span>Last Message ㅇ 3d</span>
+      </Box>
     </ListItem>
   );
 };
