@@ -167,7 +167,7 @@ const App = () => {
           {selectedChat && (
             <>
               <ChatWindow messages={selectedChat.messages} selectedChatId={selectedChatId} />
-              <MessageInput sendMessage={selectedChat.messages}
+              <MessageInput sendMessage={addMessage}
                 curUserid={currentUserid}
                 receiv_id={selectedChatId} />
             </>
