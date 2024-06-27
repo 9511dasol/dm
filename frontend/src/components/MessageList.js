@@ -14,8 +14,8 @@ const MessageItem = styled.div`
   margin: 5px 0;
   padding: 10px;
   border-radius: 10px;
-  align-self: ${props => (props.isUser ? 'flex-end' : 'flex-start')};
-  background-color: ${props => (props.isUser ? '#dcf8c6' : '#fff')};
+  align-self: ${props => (props.$isUser ? 'flex-end' : 'flex-start')};
+  background-color: ${props => (props.$isUser ? '#dcf8c6' : '#fff')};
   border: 1px solid #dbdbdb;
 `;
 
@@ -34,7 +34,7 @@ const MessageList = ({ messages = [] }) => {
   return (
     <MessageContainer>
       {messages.map((message, index) => (
-        <MessageItem key={index} isUser={message.send}>
+        <MessageItem key={index} $isUser={message.send}>
           {message.text}
         </MessageItem>
       ))}

@@ -4,7 +4,6 @@ import React from "react";
 const ListItem = styled.div`
   padding: 15px;
   border-bottom: 1px solid #dbdbdb;
-  cursor: pointer;
   display: flex;
 
   align-items: center;
@@ -23,6 +22,7 @@ const Avatar = styled.div`
   background-color: #bbb;
   margin-right: 10px;
 `;
+<<<<<<< HEAD
 const Box = styled.div`
   display: flex;
   flex-direction: column;
@@ -40,6 +40,27 @@ const ChatListItem = ({ chat, selectChat }) => {
         <span>Last Message ㅇ 3d</span>
       </Box>
     </ListItem>
+=======
+
+// const Readed = styled.div`
+//   width: 40px;
+//   height: 40px;
+//   border-radius: 50%;
+//   background-color: #bbb;
+//   margin-right: 10px;
+// `;
+
+const ChatListItem = ({ chat, selectChat }) => {
+  return (
+    <a>
+      <ListItem onClick={() => selectChat(chat.id)}>
+        <Avatar />
+        {chat.name}
+        {/* <Readed/> */}
+      </ListItem>
+    </a>
+
+>>>>>>> a7318113b8410a86690c9ad5e75ffd1b1e4bac25
   );
 };
 
