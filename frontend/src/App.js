@@ -47,19 +47,7 @@ const App = () => {
   // 로그인 하면 myid 받기
   const currentUserid = 6
   // setCurrentUserId(6);
-<<<<<<< HEAD
   // const [chats, setChats] = useState([]);
-=======
-  const [chats, setChats] = useState([]);
-  const [selectedChatId, setSelectedChatId] = useState(null);
- 
-  // const [chats, setChats] = useState([
-  //   { id: 1, name: 'John Doe', messages: [], "createdat":createdat },
-  //   { id: 2, name: 'Jane Smith', messages: [], "createdat":createdat },
-  //   { id: 3, name: 'John', messages: [], "createdat":createdat },
-  //   { id: 4, name: 'Minji', messages: [], "createdat":createdat },
-  // ]);
->>>>>>> a7318113b8410a86690c9ad5e75ffd1b1e4bac25
 
   // useEffect(() => {
   //   fetchChats();  // 컴포넌트가 처음 마운트될 때 채팅 목록을 가져오는 함수 호출
@@ -126,7 +114,6 @@ const App = () => {
       console.error('Error fetching chats:', error);
     });
   };
-<<<<<<< HEAD
   const [chats, setChats] = useState([
     { id: 1, name: 'John Doe', messages: []},
     { id: 2, name: 'Jane Smith', messages: []},
@@ -162,57 +149,6 @@ const App = () => {
   //   }).catch(error => {
   //     console.error('Error sending message:', error);
   //   });
-=======
-
-
-  const sendMessage = (message) => {
-    // 메시지를 보내는 함수 (예: handleSend 함수 내부와 동일)
-    axios.get("http://127.0.0.1:8000/dm.do", {
-      params: {
-        select: 2,
-        dm: message.text,
-        me: currentUserid,
-        you: selectedChatId,
-      },
-    }).then((response) => {
-      // 메시지 전송 후 채팅 목록을 다시 가져옴
-      fetchChats();
-    }).catch(error => {
-      console.error('Error sending message:', error);
-    });
-  };
-
-  // const receiveMessage = () => {
-  //   const chatSocket = new WebSocket(`ws://${window.location.host}/ws/chat/${selectedChatId}/`);
-
-  //   chatSocket.onmessage = function (e) {
-  //     const data = JSON.parse(e.data);
-  //     // 받은 메시지 처리 로직 (예시: 채팅 목록을 다시 가져오는 것처럼)
-  //     const { sender, receiver, message } = data;
-  //     axios.get("http://127.0.0.1:8000/dm.do", {
-  //       params: {
-  //         select: 3,
-  //         dm: message.text,
-  //         me: receiver,
-  //         you: sender,
-  //       },
-  //     }).then((response) => {
-  //       // 메시지 전송 후 채팅 목록을 다시 가져옴
-  //       fetchChats();
-  //     }).catch(error => {
-  //       console.error('Error sending message:', error);
-  //     });
-  //   };
-
-  //   chatSocket.onclose = function (e) {
-  //     console.error('Chat socket closed unexpectedly');
-  //   };
-
-  //   return () => {
-  //     chatSocket.close();
-  //   };
-
->>>>>>> a7318113b8410a86690c9ad5e75ffd1b1e4bac25
   // };
 
   const selectChat = (id) => { //  'id': partner_id,
@@ -231,7 +167,7 @@ const App = () => {
           {selectedChat && (
             <>
               <ChatWindow messages={selectedChat.messages} selectedChatId={selectedChatId} />
-              <MessageInput sendMessage={sendMessage}
+              <MessageInput sendMessage={selectedChat.messages}
                 curUserid={currentUserid}
                 receiv_id={selectedChatId} />
             </>
