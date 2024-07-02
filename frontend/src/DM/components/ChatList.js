@@ -3,14 +3,15 @@ import styled from "styled-components";
 import ChatListItem from "./ChatListItem";
 
 const ListContainer = styled.div`
-  direction: ltr;
-  display: flex;
-  flex-direction: column;
-  width: 250px;
+  width: 230px;
   border-right: 1px solid #dbdbdb;
   overflow-y: auto;
+  
   @media (max-width: 899px) {
-  width: 80px;}
+    position: relative;
+    width: max-content;
+    align-items: center;
+  }
 `;
 
 const ChatList = ({ chats, selectChat }) => {
