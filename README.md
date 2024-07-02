@@ -1,5 +1,5 @@
-# Djanogo Project - Instagram DM
-인스타그램 DM, Side Nav 제작
+# Djanogo Project - DM of Instagram clone coding
+인스타그램 DM, Side Nav
 
 ## 프로젝트 소개 🖥️
 인스타그램을 참고하여 만든 인스타그램 dm page
