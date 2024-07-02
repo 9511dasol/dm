@@ -1,0 +1,45 @@
+.homepage {
+  display: flex;
+  flex-direction: row;
+}
+
+.homepage__nav {
+  flex: 0.2;
+}
+
+.homepage__timeline {
+  flex: 0.8;
+}
+.mobile {
+  display: none;
+}
+/* @media screen and (max-width: 1099px) {
+  .pc {
+    display: none;
+  }
+  .mobile {
+    display: flex;
+  }
+  .homepage {
+    display: flex;
+    flex-direction: column;
+  }
+  .homepage__timeline {
+    flex: 0.8;
+  }
+  .homepage__nav {
+    flex: 0.2;
+  }
+} */
+
+@media screen and (max-width: 899px) {
+  .homepage__nav {
+    flex: 0.1;
+    width: 73px;
+    padding-left: 3px;
+  }
+  
+  .homepage__timeline {
+    flex: 0.9;
+  }
+}

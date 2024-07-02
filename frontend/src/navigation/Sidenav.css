@@ -1,0 +1,82 @@
+.sidenav {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  z-index: 1;
+  width: min-content;
+}
+.sidenav__logo {
+  width: 120px;
+  margin: 25px;
+}
+
+.sidenav__button > span {
+  font-size: 18px;
+  font-weight: bolder;
+  margin-left: 10px;
+}
+
+.sidenav__buttons {
+  display: flex;
+  flex-direction: column;
+}
+.sidenav__more {
+  position: fixed;
+  bottom: 3px;
+}
+
+.sidenav__button {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  color: white;
+  background: 0;
+  border: 0;
+  margin: 5px 10px;
+  padding: 10px 15px;
+  /* sdadsadadsadsasa */
+  border-radius: 15px;
+  width: 100%;
+}
+
+.sidenav__button:hover {
+  cursor: pointer;
+  background-color: rgba(255, 255, 255, 0.122);
+}
+
+.sidenav__button:active {
+  background-color: rgba(255, 255, 255, 0.122); /* 클릭했을 때의 배경 색상 */
+  transform: translateY(2px); /* 클릭했을 때 약간 아래로 이동하는 효과 */
+  text-decoration: none; /* 클릭했을 때 밑줄 제거 */
+}
+
+.media {
+  display: none;
+}
+
+@media screen and (max-width: 899px) {
+  .sidenav__button > span {
+    display: none;
+  }
+  .sidenav__logo {
+    display: none;
+  }
+  .sidenav{
+    width: 73px;
+    align-items: center;
+    text-align: center;
+
+  }
+  .sidenav__buttons {
+    display: flex;
+    flex-direction: column;
+    width: 73px;
+
+  }
+}
+
+@media screen and (max-width: 599px) {
+  .media {
+    display: flex;
+  }
+}

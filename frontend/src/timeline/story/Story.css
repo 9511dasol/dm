@@ -1,0 +1,12 @@
+.timeline__story{
+    margin: 15px 0px 0px 0px;
+    display: flex;
+    flex-direction: row;
+}
+
+.story__user{
+    margin-right: 20px;
+}
+.user__name {
+    margin-top: 5px;
+}

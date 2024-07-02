@@ -120,6 +120,7 @@ def setChats(id):
     """
     cursor.execute(dm_room)
     rows = cursor.fetchall()
+    name = None
     chats = {}  # 채팅 데이터를 저장할 딕셔너리
     # 방 만들기
     for row in rows:
@@ -152,12 +153,14 @@ def setChats(id):
             'text': message_text,
             'sent_at': sent_at,
             'send': True,
+            'name':name,
         })
         else:
             chats[a(receiver_id)]['messages'].append({
             'text': message_text,
             'sent_at': sent_at,
             'send': False,
+            'name':name,
         })
     chats_list = list(chats.values())
     return chats_list
