@@ -1,4 +1,4 @@
-# Djanogo -Project - Instagram DM
+# Djanogo Project - Instagram DM
 인스타그램 DM, Side Nav 제작
 
 ## 프로젝트 소개 🖥️
