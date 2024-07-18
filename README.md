@@ -30,7 +30,10 @@
 ![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)
 
 ## 주요 기능 📌
-- DB 정보 불러오기
+- 로그인 세션 불러오기
+- 로그인 세션에 대한 DB 정보 불러오기
+- WebSocket
+
 # 주요 코드
 ### JAVASCRIPT
    
