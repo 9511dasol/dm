@@ -43,3 +43,8 @@
     flex: 0.9;
   }
 }
+@media screen and (max-width: 599px) {
+  .homepage {
+    flex-direction: column-reverse;
+  }
+}

@@ -9,14 +9,11 @@ function Homepage() {
 
   return (
     <div className="homepage">
-      <div className={`homepage__nav pc`}>
+      <div className={`homepage__nav`}>
         <Sidenav />
       </div>
       <div className="homepage__timeline">
         <Outlet />
-      </div>
-      <div className={`homepage__nav mobile`}>
-        <Sidenav />
       </div>
     </div>
   );

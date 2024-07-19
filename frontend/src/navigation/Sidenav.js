@@ -18,8 +18,8 @@ function Sidenav() {
         src="https://www.pngkey.com/png/full/828-8286178_mackeys-work-needs-no-elaborate-presentation-or-distracting.png"
         alt="Instagram Logo"
       />
-      <div className="sidenav__buttons pc">
-        <Link to={"timeline"}>
+      <div className="sidenav__buttons">
+        <Link to={"/timeline"}>
           <button className="sidenav__button">
             <HomeIcon />
             <span>Home</span>
@@ -39,7 +39,7 @@ function Sidenav() {
           <SlideshowIcon />
           <span>Reels</span>
         </button>
-        <Link to={"DM"}>
+        <Link to={"/DM"}>
           <button className="sidenav__button">
             <ChatIcon />
             <span>Messages</span>

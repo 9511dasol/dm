@@ -4,6 +4,7 @@ import ChatWindow from "./components//ChatWindow";
 import MessageInput from "./components/MessageInput";
 import ChatList from "./components/ChatList";
 import axios from "axios";
+
 const AppContainer = styled.div`
   display: flex;
   justify-content: center;
@@ -30,54 +31,60 @@ const ChatSection = styled.div`
 
 const DirectMessages = () => {
   const currentUserid = 6;
-  const [chats, setChats] = useState([]);
+  // const [chats, setChats] = useState([]);
+  const [chats, setChats] = useState([
+    { id: 1, name: 'John Doe', messages: [] },
+    { id: 2, name: 'Jane Smith', messages: [] },
+    { id: 3, name: 'John', messages: [] },
+    { id: 4, name: 'Minji', messages: [] },
+  ]);
   const [selectedChatId, setSelectedChatId] = useState(null);
 
   useEffect(() => {
     fetchChats(); // 컴포넌트가 처음 마운트될 때 채팅 목록을 가져오는 함수 호출
   }, [currentUserid]); // currentUserid가 변경될 때마다 useEffect 호출
 
-  useEffect(() => {
-    const chatSocket = new WebSocket(
-      `ws://${window.location.host}/ws/chat/${selectedChatId}/`
-    );
+  // useEffect(() => {
+  //   const chatSocket = new WebSocket(
+  //     `ws://${window.location.host}/ws/chat/${selectedChatId}/`
+  //   );
 
-    chatSocket.onmessage = function (e) {
-      const data = JSON.parse(e.data);
-      const { sender, receiver, message } = data;
+  //   chatSocket.onmessage = function (e) {
+  //     const data = JSON.parse(e.data);
+  //     const { sender, receiver, message } = data;
 
-      // 새로운 메시지를 상태에 추가
-      const newMessage = {
-        text: message.text,
-        send: false,
-        sent_at: message.timestamp,
-      };
-      setChats((prevMessages) => [...prevMessages, newMessage]);
+  //     // 새로운 메시지를 상태에 추가
+  //     const newMessage = {
+  //       text: message.text,
+  //       send: false,
+  //       sent_at: message.timestamp,
+  //     };
+  //     setChats((prevMessages) => [...prevMessages, newMessage]);
 
-      // 메시지를 수신하면 해당 메시지를 서버에 저장하고, 채팅 목록을 다시 가져오는 예시
-      axios
-        .get("http://127.0.0.1:8000/dm.do", {
-          params: {
-            select: 3,
-            dm: message.text,
-            me: receiver,
-            you: sender,
-          },
-        })
-        .then((response) => {
-          console.log("Message saved successfully:", response.data);
-          fetchChats();
-          // 필요하다면 추가적인 로직 수행
-        })
-        .catch((error) => {
-          console.error("Error saving message:", error);
-        });
-    };
-    // 컴포넌트 언마운트 시 소켓 연결 해제
-    return () => {
-      chatSocket.close();
-    };
-  }, []);
+  //     // 메시지를 수신하면 해당 메시지를 서버에 저장하고, 채팅 목록을 다시 가져오는 예시
+  //     axios
+  //       .get("http://127.0.0.1:8000/dm.do", {
+  //         params: {
+  //           select: 3,
+  //           dm: message.text,
+  //           me: receiver,
+  //           you: sender,
+  //         },
+  //       })
+  //       .then((response) => {
+  //         console.log("Message saved successfully:", response.data);
+  //         fetchChats();
+  //         // 필요하다면 추가적인 로직 수행
+  //       })
+  //       .catch((error) => {
+  //         console.error("Error saving message:", error);
+  //       });
+  //   };
+  //   // 컴포넌트 언마운트 시 소켓 연결 해제
+  //   return () => {
+  //     chatSocket.close();
+  //   };
+  // }, []);
 
   const fetchChats = () => {
     axios

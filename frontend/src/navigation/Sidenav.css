@@ -65,18 +65,30 @@
     width: 73px;
     align-items: center;
     text-align: center;
-
+    z-index: 10px;
+    direction: ltr;
+    justify-content: flex-start;
+    position: fixed;
+    unicode-bidi: isolate;
   }
   .sidenav__buttons {
-    display: flex;
-    flex-direction: column;
     width: 73px;
 
   }
 }
 
 @media screen and (max-width: 599px) {
-  .media {
-    display: flex;
+  .sidenav {
+    flex-direction: row;
+    width: 100%;
+    position: fixed;
+    bottom: 0px;
+  }
+  .sidenav__buttons {
+    flex-direction: row;
+    width: 100%;
+  }
+  .sidenav__more {
+    display: none;
   }
 }
